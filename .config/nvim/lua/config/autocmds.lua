@@ -94,6 +94,10 @@ end
 -- Lệnh thủ công
 vim.api.nvim_create_user_command("DevStart", start_laravel_vue, {})
 vim.api.nvim_create_user_command("DevStop", stop_laravel_vue, {})
+vim.api.nvim_create_user_command("DevRestart", function()
+  stop_laravel_vue()
+  vim.defer_fn(start_laravel_vue, 2000)
+end, {})
 
 -- Tự chạy khi vào Neovim
 vim.api.nvim_create_autocmd("VimEnter", {
