@@ -7,6 +7,35 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
+local uv = vim.loop
+
+local function find_file_bfs(start_path, target_name)
+  local queue = { start_path }
+
+  while #queue > 0 do
+    local current_dir = table.remove(queue, 1)
+    local fs = uv.fs_scandir(current_dir)
+    if fs then
+      while true do
+        local name, type = uv.fs_scandir_next(fs)
+        if not name then
+          break
+        end
+
+        local full_path = current_dir .. "/" .. name
+
+        if type == "file" and name == target_name then
+          return current_dir
+        elseif type == "directory" then
+          table.insert(queue, full_path)
+        end
+      end
+    end
+  end
+
+  return nil
+end
+
 -- Module lưu các job Laravel
 local laravel_jobs = {
   serve = nil,
@@ -28,29 +57,26 @@ local function is_running(job_id)
   return status == -1 -- -1: job còn đang chạy
 end
 
--- Hàm khởi động Laravel
+-- Hàm khởi động Laravel & Vue server
 local function start_laravel_vue()
-  if vim.fn.filereadable("artisan") == 0 then
-    notify("Không phải thư mục Laravel.")
-    return
-  end
-
   if not is_running(laravel_jobs.serve) then
+    local laravelFolder = find_file_bfs(vim.fn.getcwd(), "composer.json")
     laravel_jobs.serve = vim.fn.jobstart({ "php", "artisan", "serve" }, {
-      cwd = vim.fn.getcwd(),
+      cwd = laravelFolder,
     })
     notify("🚀 php artisan serve started")
   else
-    notify("✅ php artisan serve đang chạy")
+    notify("✅ php artisan serve đã chạy rồi!")
   end
 
   if not is_running(laravel_jobs.npm) then
+    local vueFolder = find_file_bfs(vim.fn.getcwd(), "package.json")
     laravel_jobs.npm = vim.fn.jobstart({ "npm", "run", "dev" }, {
-      cwd = vim.fn.getcwd(),
+      cwd = vueFolder,
     })
     notify("🚀 npm run dev started")
   else
-    notify("✅ npm run dev đang chạy")
+    notify("✅ npm run dev đã chạy rồi!")
   end
 end
 
