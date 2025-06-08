@@ -102,12 +102,12 @@ end, {})
 -- Tự chạy khi vào Neovim
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
-    start_laravel_vue()
+    -- start_laravel_vue()
   end,
 })
 
 vim.api.nvim_create_autocmd("VimLeavePre", {
   callback = function()
-    stop_laravel_vue()
+    -- stop_laravel_vue()
   end,
 })
