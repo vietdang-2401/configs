@@ -121,3 +121,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 alias fopen='nvim $(find . -type f | fzf)'
 alias config='/usr/bin/git --git-dir=/home/dang-workpc/.cfg/ --work-tree=/home/dang-workpc'
 alias patt="while true; do php artisan tinker; done"
+
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init - zsh)"' >> ~/.zshrc

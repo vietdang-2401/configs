@@ -21,12 +21,28 @@ return {
           dir_to_save = vim.fn.stdpath("data") .. "/codecompanion-history",
         },
       },
+      mcphub = {
+        callback = "mcphub.extensions.codecompanion",
+        opts = {
+          show_result_in_chat = true, -- Show mcp tool results in chat
+          make_vars = true, -- Convert resources to #variables
+          make_slash_commands = true, -- Add prompts as /slash commands
+        },
+      },
     },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
     "ravitemer/codecompanion-history.nvim", -- Save and load conversation history
+    {
+      "ravitemer/mcphub.nvim", -- Manage MCP servers
+      cmd = "MCPHub",
+      build = "npm install -g mcp-hub@latest",
+      config = function()
+        require("mcphub").setup()
+      end,
+    },
   },
   keys = {
     {
@@ -52,6 +68,14 @@ return {
       noremap = true,
       silent = true,
       desc = "CodeCompanion add to chat",
+    },
+    {
+      "<leader>ah",
+      "<cmd>CodeCompanionHistory<cr>",
+      mode = { "v", "n" },
+      noremap = true,
+      silent = true,
+      desc = "CodeCompanion list chat history",
     },
   },
   lazy = false,
