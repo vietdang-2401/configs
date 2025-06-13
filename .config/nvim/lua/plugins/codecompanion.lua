@@ -6,10 +6,27 @@ return {
         show_settings = true,
       },
     },
+    extensions = {
+      history = {
+        enabled = true,
+        opts = {
+          keymap = "gh",
+          save_chat_keymap = "gS",
+          auto_save = false,
+          auto_generate_title = true,
+          continue_last_chat = false,
+          delete_on_clearing_chat = false,
+          picker = "snacks",
+          enable_logging = false,
+          dir_to_save = vim.fn.stdpath("data") .. "/codecompanion-history",
+        },
+      },
+    },
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
+    "ravitemer/codecompanion-history.nvim", -- Save and load conversation history
   },
   keys = {
     {
@@ -37,4 +54,5 @@ return {
       desc = "CodeCompanion add to chat",
     },
   },
+  lazy = false,
 }
