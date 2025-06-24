@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zoxide)
+plugins=(git zoxide laravel)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -102,6 +102,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 export EDITOR="/usr/bin/nvim"
 export DEFAULT_USER="dsnake"
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/go/bin
+
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias lgcfg='GIT_DIR=~/.cfg GIT_WORK_TREE=~ lazygit'
