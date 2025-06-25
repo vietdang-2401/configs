@@ -108,6 +108,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
 vim.api.nvim_create_autocmd("VimLeavePre", {
   callback = function()
-    -- stop_laravel_vue()
+    stop_laravel_vue()
   end,
 })

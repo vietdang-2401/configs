@@ -121,6 +121,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 alias fopen='nvim $(find . -type f | fzf)'
 alias config='/usr/bin/git --git-dir=/home/dang-workpc/.cfg/ --work-tree=/home/dang-workpc'
 alias patt="while true; do php artisan tinker; done"
+alias lgcfg='GIT_DIR=~/.cfg GIT_WORK_TREE=~ lazygit'
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
