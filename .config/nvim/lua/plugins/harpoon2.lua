@@ -28,6 +28,27 @@ return {
     vim.keymap.set("n", "<leader>fh", function()
       Snacks.picker({
         finder = generate_harpoon_picker,
+        win = {
+          input = {
+            keys = {
+              ["dd"] = { "harpoon_delete", mode = { "n", "x" } },
+            },
+          },
+          list = {
+            keys = {
+              ["dd"] = { "harpoon_delete", mode = { "n", "x" } },
+            },
+          },
+        },
+        actions = {
+          harpoon_delete = function(picker, item)
+            local to_remove = item or picker:selected()
+            table.remove(harpoon:list().items, to_remove.idx)
+            picker:find({
+              refresh = true, -- refresh picker after removing values
+            })
+          end,
+        },
       })
     end, { desc = "Harpoon picker" })
   end,
