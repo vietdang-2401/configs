@@ -19,7 +19,7 @@ return {
         }
         table.insert(file_paths, entry)
       end
-      Snacks.debug.log(file_paths)
+      -- Snacks.debug.log(file_paths)
       return file_paths
     end
     -- vim.keymap.set("n", "<leader>a", function()
