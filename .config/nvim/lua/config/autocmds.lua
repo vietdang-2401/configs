@@ -83,11 +83,17 @@ end
 local function stop_laravel_vue()
   if laravel_jobs.serve then
     vim.fn.jobstop(laravel_jobs.serve)
+    laravel_jobs.serve = nil
     notify("Stopped php artisan serve")
+  else
+    notify("php artisan serve chưa chạy!")
   end
   if laravel_jobs.npm then
     vim.fn.jobstop(laravel_jobs.npm)
+    laravel_jobs.npm = nil
     notify("Stopped npm run dev")
+  else
+    notify("npm run dev chưa chạy!")
   end
 end
 
