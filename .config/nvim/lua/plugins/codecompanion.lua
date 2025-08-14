@@ -11,7 +11,7 @@ return {
         enabled = true,
         opts = {
           keymap = "gh",
-          save_chat_keymap = "gS",
+          save_chat_keymap = "gA",
           auto_save = false,
           auto_generate_title = true,
           continue_last_chat = false,
