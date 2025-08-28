@@ -61,10 +61,12 @@ end
 local function start_laravel_vue()
   if not is_running(laravel_jobs.serve) then
     local laravelFolder = find_file_bfs(vim.fn.getcwd(), "composer.json")
-    laravel_jobs.serve = vim.fn.jobstart({ "php", "artisan", "serve" }, {
-      cwd = laravelFolder,
-    })
-    notify("🚀 php artisan serve started")
+    if laravelFolder ~= nil then
+      laravel_jobs.serve = vim.fn.jobstart({ "php", "artisan", "serve" }, {
+        cwd = laravelFolder,
+      })
+      notify("🚀 php artisan serve started")
+    end
   else
     notify("✅ php artisan serve đã chạy rồi!")
   end
