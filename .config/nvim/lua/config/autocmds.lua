@@ -119,3 +119,11 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
     stop_laravel_vue()
   end,
 })
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  pattern = "*CodeCompanion*",
+  callback = function()
+    local win = vim.api.nvim_get_current_win()
+    vim.api.nvim_win_set_width(win, 80) -- Set max width to 80 columns
+  end,
+})

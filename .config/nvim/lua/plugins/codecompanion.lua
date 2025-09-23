@@ -3,7 +3,7 @@ return {
   opts = {
     display = {
       chat = {
-        show_settings = true,
+        show_settings = false,
       },
     },
     extensions = {
