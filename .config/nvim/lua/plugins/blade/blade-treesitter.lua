@@ -1,0 +1,30 @@
+return {
+  -- "nvim-treesitter/nvim-treesitter",
+  -- opts = function(_, opts)
+  --   -- Thêm các ngôn ngữ cần thiết vào danh sách tự động cài đặt
+  --   if type(opts.ensure_installed) == "table" then
+  --     vim.list_extend(opts.ensure_installed, { "html", "php", "php_only", "javascript", "css" })
+  --   end
+  -- end,
+  -- config = function(_, opts)
+  --   require("nvim-treesitter.configs").setup(opts)
+  --
+  --   -- Đăng ký parser Blade thủ công
+  --   local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+  --   parser_config.blade = {
+  --     install_info = {
+  --       url = "https://github.com/EmranMR/tree-sitter-blade",
+  --       files = { "src/parser.c" },
+  --       branch = "main",
+  --     },
+  --     filetype = "blade",
+  --   }
+  --
+  --   -- Ép Neovim nhận diện file .blade.php là loại "blade"
+  --   vim.filetype.add({
+  --     pattern = {
+  --       [".*%.blade%.php"] = "blade",
+  --     },
+  --   })
+  -- end,
+}
