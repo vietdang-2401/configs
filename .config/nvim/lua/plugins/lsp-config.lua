@@ -4,13 +4,20 @@ return {
     servers = { eslint = {} },
     setup = {
       eslint = function()
-        require("lazyvim.util").lsp.on_attach(function(client)
+        Snacks.util.lsp.on(function(buf, client)
           if client.name == "eslint" then
             client.server_capabilities.documentFormattingProvider = true
-          elseif client.name == "volar" then
+          elseif client.name == "vue_ls" then
             client.server_capabilities.documentFormattingProvider = false
           end
         end)
+        -- require("lazyvim.util").lsp.on_attach(function(client)
+        --   if client.name == "eslint" then
+        --     client.server_capabilities.documentFormattingProvider = true
+        --   elseif client.name == "vue_ls" then
+        --     client.server_capabilities.documentFormattingProvider = false
+        --   end
+        -- end)
       end,
     },
   },
