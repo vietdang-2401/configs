@@ -13,12 +13,12 @@ return {
       end,
       color = { fg = "#ffaa00" }, -- Optional: set color
     })
-    -- table.insert(opts.sections.lualine_z, {
-    --   function()
-    --     return os.date("%Y-%m-%d %H:%M")
-    --   end,
-    --   color = { fg = "#fff" }, -- Optional: set color
-    -- })
+    table.insert(opts.sections.lualine_z, {
+      function()
+        return os.date("%d-%m")
+      end,
+      color = { fg = "#000000" }, -- Optional: set color
+    })
     table.insert(opts.sections.lualine_b, 1, { getcwd })
     -- table.insert(opts.sections.lualine_b, 1, { "branch" })
   end,
