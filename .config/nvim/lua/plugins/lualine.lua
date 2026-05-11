@@ -19,6 +19,14 @@ return {
       end,
       color = { fg = "#000000" }, -- Optional: set color
     })
+    if os.getenv("SSH_CONNECTION") then
+      table.insert(opts.sections.lualine_z, {
+        function()
+          return "SSH"
+        end,
+        color = { fg = "#ff0000" }, -- Optional: set color
+      })
+    end
     table.insert(opts.sections.lualine_b, 1, { getcwd })
     -- table.insert(opts.sections.lualine_b, 1, { "branch" })
   end,

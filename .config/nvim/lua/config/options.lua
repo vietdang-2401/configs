@@ -8,3 +8,5 @@ vim.o.showtabline = 0
 -- Set to "intelephense" to use intelephense instead of phpactor.
 vim.g.lazyvim_php_lsp = "intelephense"
 vim.g.root_spec = { ".git", "README.md" }
+
+vim.opt.clipboard = "unnamedplus"
