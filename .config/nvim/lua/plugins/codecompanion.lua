@@ -6,6 +6,27 @@ return {
         show_settings = false,
       },
     },
+    interactions = {
+      cli = {
+        agent = "piai",
+        agents = {
+          piai = {
+            cmd = "cce",
+            args = { "pirago" },
+            description = "Claude Code CLI",
+            provider = "terminal",
+          },
+        },
+        window = {
+          layout = "vertical",
+          width = 0.4,
+          height = 0.6,
+          opts = {
+            list = false,
+          },
+        },
+      },
+    },
     extensions = {
       history = {
         enabled = true,
@@ -77,6 +98,22 @@ return {
       noremap = true,
       silent = true,
       desc = "CodeCompanion list chat history",
+    },
+    {
+      "<leader>ag",
+      "<cmd>CodeCompanionCLI<cr>",
+      mode = { "v", "n" },
+      noremap = true,
+      silent = true,
+      desc = "CodeCompanion CLI",
+    },
+    {
+      "<leader>at",
+      "<cmd>lua require('codecompanion').toggle()<cr>",
+      mode = { "v", "n" },
+      noremap = true,
+      silent = true,
+      desc = "CodeCompanion toggle",
     },
   },
   lazy = false,

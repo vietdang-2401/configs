@@ -10,3 +10,7 @@ vim.g.lazyvim_php_lsp = "intelephense"
 vim.g.root_spec = { ".git", "README.md" }
 
 vim.opt.clipboard = "unnamedplus"
+
+vim.cmd([[cab cc CodeCompanion]])
+
+vim.api.nvim_set_keymap("t", "<C-j>", [[<C-\><C-n>]], { noremap = true, silent = true })
