@@ -10,6 +10,10 @@ vim.g.lazyvim_php_lsp = "intelephense"
 vim.g.root_spec = { ".git", "README.md" }
 
 vim.opt.clipboard = "unnamedplus"
+vim.opt.scrollback = 100000
+
+vim.keymap.set("t", "<C-u>", [[<PageUp>]], { remap = false })
+vim.keymap.set("t", "<C-d>", [[<PageDown>]], { remap = false })
 
 vim.cmd([[cab cc CodeCompanion]])
 
