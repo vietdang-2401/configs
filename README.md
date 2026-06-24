@@ -1,10 +1,15 @@
 list cần cài:
 
+neovim
 lazygit
 lazydocker
 ripgrep
 nvm
-sdkman
-pyenv
+sdkman(java)
+pyenv(python)
 zsh
 oh-my-zsh
+git delta
+fzf
+fd-find
+
