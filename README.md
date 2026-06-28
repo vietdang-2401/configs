@@ -4,22 +4,32 @@ Terminal
 ✅ Kitty
 ✅ Zsh
 ✅ Oh My Zsh
+✅ zoxide
+✅ zsh-autosuggestions
+✅ fast-syntax-highlighting
+✅ zsh-autocomplete
+
 Editor
 ✅ Neovim (build từ source, branch stable)
+
 Git
 ✅ Git
 ✅ Delta (pager đẹp cho Git)
 ✅ LazyGit
+
 Docker
 ✅ LazyDocker
+
 Search / CLI utilities
 ✅ ripgrep (rg)
 ✅ fd (fd)
 ✅ fzf
+
 Language managers
 ✅ nvm (Node.js)
 ✅ SDKMAN! (Java, Maven, Gradle, Kotlin...)
 ✅ pyenv (Python)
+
 Build tools
 ✅ gcc
 ✅ g++
@@ -30,6 +40,7 @@ Build tools
 ✅ autoconf
 ✅ automake
 ✅ libtool
+
 Python build dependencies
 ✅ libssl-dev
 ✅ zlib1g-dev
@@ -41,6 +52,7 @@ Python build dependencies
 ✅ libncursesw5-dev
 ✅ tk-dev
 ✅ uuid-dev
+
 Các tiện ích cơ bản
 ✅ curl
 ✅ wget
@@ -52,6 +64,7 @@ Các tiện ích cơ bản
 ✅ ca-certificates
 ✅ software-properties-common
 ✅ gnupg
+
 Chưa được cài (sẽ cài sau bằng các manager)
 
 Sau khi mở terminal mới, chạy:

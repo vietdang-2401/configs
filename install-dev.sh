@@ -206,6 +206,33 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 fi
 
 #####################################################
+# zsh plugins
+#####################################################
+
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+
+clone_plugin() {
+    local repo="$1"
+    local dir="$2"
+
+    if [ ! -d "$dir" ]; then
+        git clone --depth=1 "$repo" "$dir"
+    fi
+}
+
+clone_plugin \
+    https://github.com/zsh-users/zsh-autosuggestions \
+    "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
+
+clone_plugin \
+    https://github.com/zdharma-continuum/fast-syntax-highlighting \
+    "$ZSH_CUSTOM/plugins/fast-syntax-highlighting"
+
+clone_plugin \
+    https://github.com/marlonrichert/zsh-autocomplete \
+    "$ZSH_CUSTOM/plugins/zsh-autocomplete"
+
+#####################################################
 # zsh default shell
 #####################################################
 if [ "$SHELL" != "$(command -v zsh)" ]; then
