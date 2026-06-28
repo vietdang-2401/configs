@@ -21,7 +21,8 @@ sudo apt install -y \
   ripgrep \
   fd-find \
   fzf \
-  zoxide zsh \
+  zoxide \
+  zsh \
   ninja-build \
   gettext \
   cmake \
