@@ -109,8 +109,8 @@ source $ZSH/oh-my-zsh.sh
 
 export NVM_DIR=~/.nvm
  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-export PATH="/home/dang-workpc/.config/herd-lite/bin:$PATH"
-export PHP_INI_SCAN_DIR="/home/dang-workpc/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+export PATH="$HOME/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 
 export PATH="$HOME/neovim/build/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
@@ -121,7 +121,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 alias fopen='nvim $(find . -type f | fzf)'
-alias config='/usr/bin/git --git-dir=/home/dang-workpc/.cfg/ --work-tree=/home/dang-workpc'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias patt="while true; do php artisan tinker; done"
 alias lgcfg='GIT_DIR=~/.cfg GIT_WORK_TREE=~ lazygit'
 alias his-cmd="history | fzf | awk '{\$1=\"\"; sub(/^ /, \"\", \$0); print}' | xclip -selection clipboard | echo 'Copyed to clipboard' "
@@ -132,7 +132,7 @@ eval "$(pyenv init - zsh)"
 eval "$(zoxide init zsh)"
 
 # bun completions
-[ -s "/home/dang-workpc/.bun/_bun" ] && source "/home/dang-workpc/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
