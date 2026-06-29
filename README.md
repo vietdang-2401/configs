@@ -21,6 +21,7 @@ config checkout <branch-name>
 * ✅ zsh-autosuggestions
 * ✅ fast-syntax-highlighting
 * ✅ zsh-autocomplete
+* ✅ xclip
 
 ### ✍️ Editor
 

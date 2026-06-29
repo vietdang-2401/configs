@@ -42,7 +42,8 @@ sudo apt install -y \
   liblzma-dev \
   libncursesw5-dev \
   tk-dev \
-  uuid-dev
+  uuid-dev \
+  xclip
 
 #####################################################
 # fd alias
