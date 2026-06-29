@@ -1,0 +1,25 @@
+ConfigFile = '/home/gnadvn/.config/lazysql/config.toml'
+LocalConfigFile = ''
+
+[application]
+DefaultPageSize = 300
+DisableSidebar = false
+SidebarOverlay = false
+MaxQueryHistoryPerConnection = 100
+TreeWidth = 30
+JSONViewerWordWrap = false
+EnterOpensJSONViewer = false
+
+[[database]]
+Name = 'oem-api'
+URL = 'mysql://root:password@localhost:3306'
+Provider = 'mysql'
+Username = ''
+Password = ''
+Hostname = ''
+Port = ''
+DBName = ''
+URLParams = ''
+ReadOnly = false
+Schemas = []
+Commands = []
