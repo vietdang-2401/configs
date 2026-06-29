@@ -1,6 +1,15 @@
 
 # 🛠️ Development Environment Setup (Linux Mint)
 
+## Clone dotfile to new system
+
+```bash
+echo ".cfg" >> .gitignore
+git clone --bare git@github.com:vietdang-2401/configs.git $HOME/.cfg
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+config checkout <branch-name>
+```
+
 ## Cài đặt
 
 ### 🖥️ Terminal
