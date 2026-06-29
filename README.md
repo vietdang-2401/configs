@@ -95,6 +95,12 @@ bash <(curl -fsSL https://raw.githubusercontent.com/vietdang-2401/configs/pirago
 git config --global core.excludesfile ~/.gitignore_global
 ```
 
+### Hide untrack config files
+
+```bash
+config config status.showUntrackedFiles no
+```
+
 ### Cài các runtime
 
 Mở terminal mới rồi chạy:
