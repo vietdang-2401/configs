@@ -3,3 +3,4 @@
 **/.claude
 **/.mcp.json
 **/.claude/settings.local.json
+**/jwks-oem-auth.json

@@ -16,6 +16,12 @@ return {
             description = "Claude Code CLI",
             provider = "terminal",
           },
+          codex = {
+            cmd = "codex",
+            args = {},
+            description = "Codex Code CLI",
+            provider = "terminal",
+          },
         },
         window = {
           layout = "vertical",

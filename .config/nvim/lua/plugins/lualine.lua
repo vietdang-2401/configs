@@ -3,6 +3,21 @@ local function getcwd()
   return vim.fn.fnamemodify(cwd, ":t")
 end
 
+local function get_input_method()
+  if vim.fn.executable("fcitx5-remote") == 0 then
+    return "E"
+  end
+
+  local state = vim.trim(vim.fn.system("fcitx5-remote"))
+  local im_name = vim.trim(vim.fn.system("fcitx5-remote -n"))
+
+  if state == "1" and im_name ~= "keyboard-us" then
+    return "V"
+  end
+
+  return "E"
+end
+
 return {
   "nvim-lualine/lualine.nvim",
   opts = function(_, opts)
@@ -19,6 +34,10 @@ return {
       end,
       color = { fg = "#000000" }, -- Optional: set color
     })
+    -- table.insert(opts.sections.lualine_z, {
+    --   get_input_method,
+    --   color = { fg = "#000000" },
+    -- })
     if os.getenv("SSH_CONNECTION") then
       table.insert(opts.sections.lualine_z, {
         function()

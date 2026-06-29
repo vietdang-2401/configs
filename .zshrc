@@ -137,6 +137,7 @@ eval "$(zoxide init zsh)"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH=$PATH:$(go env GOPATH)/bin
 
 [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
 [ -s ~/.luaver/completions/luaver.bash ] && . ~/.luaver/completions/luaver.bash
@@ -144,3 +145,11 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+DISABLE_AUTO_TITLE="true"
+# Tự động gửi tên thư mục hiện tại lên Terminal sau mỗi câu lệnh
+set_terminal_title() {
+  # Lấy tên thư mục cuối cùng (cwd name)
+  print -Pn "\e]2;${PWD:t}\a"
+}
+add-zsh-hook precmd set_terminal_title

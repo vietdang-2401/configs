@@ -18,3 +18,4 @@ vim.keymap.set("t", "<C-d>", [[<PageDown>]], { remap = false })
 vim.cmd([[cab cc CodeCompanion]])
 
 vim.api.nvim_set_keymap("t", "<C-j>", [[<C-\><C-n>]], { noremap = true, silent = true })
+vim.opt.title = false
