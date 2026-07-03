@@ -1,12 +1,32 @@
 return {
   "olimorris/codecompanion.nvim",
   opts = {
+    adapters = {
+      http = {
+        ["9router"] = function()
+          return require("codecompanion.adapters").extend("openai_compatible", {
+            env = {
+              url = "http://127.0.0.1:20128/v1",
+              api_key = "sk-44d3d6a22b5cb881-jmm96x-b0323970",
+            },
+            schema = {
+              model = {
+                default = "ag/claude-sonnet-4-6",
+              },
+            },
+          })
+        end,
+      },
+    },
     display = {
       chat = {
         show_settings = false,
       },
     },
     interactions = {
+      chat = { adapter = "9router" },
+      inline = { adapter = "9router" },
+      cmd = { adapter = "9router" },
       cli = {
         agent = "piai",
         agents = {
