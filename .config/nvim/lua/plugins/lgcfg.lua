@@ -11,20 +11,21 @@ return {
     "LazyVim/LazyVim",
     keys = {
       {
-        "<leader>ld",
+        "<leader>lc",
         function()
-          Snacks.terminal.toggle({ "lazysql" }, {
+          Snacks.terminal.toggle("lazygit", {
+            cwd = vim.fn.expand("~"),
+            env = {
+              GIT_DIR = vim.fn.expand("~/.cfg"),
+              GIT_WORK_TREE = vim.fn.expand("~"),
+            },
             win = {
               style = "float",
-              border = "",
               width = 0.9,
               height = 0.9,
               on_buf = function(win)
                 -- Chặn phím q ở mức buffer: Ẩn terminal
-                vim.keymap.set("t", "q", function()
-                  Snacks.terminal.get("lazysql"):hide()
-                  -- vim.api.nvim_feedkeys("q", "t", false)
-                end, { buffer = win.buf, nowait = true })
+                vim.keymap.set("t", "q", "<cmd>hide<cr>", { buffer = win.buf, nowait = true })
 
                 -- Chặn phím Q ở mức buffer: Gửi lệnh q thật để thoát hẳn
                 vim.keymap.set("t", "Q", "q", { buffer = win.buf, nowait = true })
@@ -32,7 +33,7 @@ return {
             },
           })
         end,
-        desc = "LazySql (q: Hide, Q: Quit)",
+        desc = "Open config repo (q: Hide, Q: Quit)",
       },
     },
   },

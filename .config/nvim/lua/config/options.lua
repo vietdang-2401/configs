@@ -15,7 +15,7 @@ vim.opt.scrollback = 100000
 vim.keymap.set("t", "<C-u>", [[<PageUp>]], { remap = false })
 vim.keymap.set("t", "<C-d>", [[<PageDown>]], { remap = false })
 
-vim.cmd([[cab cc CodeCompanion]])
+vim.cmd([[cab ccc CodeCompanionCLI]])
 
 vim.api.nvim_set_keymap("t", "<C-j>", [[<C-\><C-n>]], { noremap = true, silent = true })
 vim.opt.title = false
