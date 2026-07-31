@@ -1,3 +1,24 @@
+local function load_env()
+  local env_path = vim.fn.stdpath("config") .. "/.env"
+  local f = io.open(env_path, "r")
+  if not f then
+    return
+  end
+
+  for line in f:lines() do
+    if not line:match("^%s*$") and not line:match("^%s*#") then
+      local key, val = line:match("^%s*([^=]+)%s*=%s*(.*)%s*$")
+      if key and val then
+        val = val:gsub("^['\"]", ""):gsub("['\"]$", "")
+        vim.env[key] = val
+      end
+    end
+  end
+  f:close()
+end
+
+load_env()
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"

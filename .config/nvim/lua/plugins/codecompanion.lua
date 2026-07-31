@@ -6,12 +6,25 @@ return {
         ["9router"] = function()
           return require("codecompanion.adapters").extend("openai_compatible", {
             env = {
-              url = "http://127.0.0.1:20128/v1",
-              api_key = "sk-44d3d6a22b5cb881-jmm96x-b0323970",
+              url = os.getenv("NINE_ROUTER_URL"),
+              api_key = os.getenv("NINE_ROUTER_API_KEY"),
             },
             schema = {
               model = {
                 default = "ag/claude-sonnet-4-6",
+              },
+            },
+          })
+        end,
+        ["9router-pirago"] = function()
+          return require("codecompanion.adapters").extend("openai_compatible", {
+            env = {
+              url = os.getenv("NINE_ROUTER_PIRAGO_URL"),
+              api_key = os.getenv("NINE_ROUTER_PIRAGO_API_KEY"),
+            },
+            schema = {
+              model = {
+                default = "pirago-sonnet",
               },
             },
           })
@@ -24,18 +37,25 @@ return {
       },
     },
     interactions = {
-      chat = { adapter = "9router" },
-      inline = { adapter = "9router" },
-      cmd = { adapter = "9router" },
+      chat = { adapter = "9router-pirago" },
+      inline = { adapter = "9router-pirago" },
+      cmd = { adapter = "9router-pirago" },
       cli = {
         agent = "piai",
         agents = {
           piai = {
-            cmd = "cce",
-            args = { "pirago" },
+            cmd = "claude",
+            args = {},
             description = "Claude Code CLI",
             provider = "terminal",
           },
+          piai_resume = {
+            cmd = "claude",
+            args = { "--resume" },
+            description = "Claude Code CLI",
+            provider = "terminal",
+          },
+
           codex = {
             cmd = "codex",
             args = {},
@@ -132,6 +152,14 @@ return {
       noremap = true,
       silent = true,
       desc = "CodeCompanion CLI",
+    },
+    {
+      "<leader>as",
+      "<cmd>CodeCompanionCLI agent=piai_resume<cr>",
+      mode = { "v", "n" },
+      noremap = true,
+      silent = true,
+      desc = "CodeCompanion CLI Resume last session",
     },
     {
       "<leader>at",
