@@ -127,3 +127,19 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
     vim.api.nvim_win_set_width(win, 80) -- Set max width to 80 columns
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.schedule(function()
+      vim.opt_local.spell = false
+    end)
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function(args)
+    vim.diagnostic.enable(false, { bufnr = args.buf })
+  end,
+})
