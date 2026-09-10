@@ -17,5 +17,8 @@ vim.keymap.set("t", "<C-d>", [[<PageDown>]], { remap = false })
 
 vim.cmd([[cab ccc CodeCompanionCLI]])
 
+vim.api.nvim_set_keymap("t", "<C-h>", [[<C-\><C-n>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap("t", "<C-j>", [[<C-\><C-n>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<C-k>", [[<C-\><C-n>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<C-l>", [[<C-\><C-n>]], { noremap = true, silent = true })
 vim.opt.title = false

@@ -125,6 +125,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias patt="while true; do php artisan tinker; done"
 alias lgcfg='GIT_DIR=~/.cfg GIT_WORK_TREE=~ lazygit'
 alias his-cmd="history | fzf | awk '{\$1=\"\"; sub(/^ /, \"\", \$0); print}' | xclip -selection clipboard | echo 'Copyed to clipboard' "
+alias sail='sh $([ -f sail ] && echo sail || echo ../vendor/bin/sail)'
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
