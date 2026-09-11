@@ -22,6 +22,7 @@ config checkout <branch-name>
 * ✅ fast-syntax-highlighting
 * ✅ zsh-autocomplete
 * ✅ xclip
+* ✅ tmux
 
 ### ✍️ Editor
 
@@ -37,6 +38,10 @@ config checkout <branch-name>
 
 * ✅ LazyDocker
 
+### 🗄️ Database
+
+* ✅ LazySQL
+
 ### 🔍 Search / CLI Utilities
 
 * ✅ ripgrep (`rg`)
@@ -48,6 +53,7 @@ config checkout <branch-name>
 * ✅ nvm (Node.js)
 * ✅ SDKMAN! (Java, Maven, Gradle, Kotlin...)
 * ✅ pyenv (Python)
+* ✅ Go
 
 ### 🔨 Build Tools
 

@@ -23,6 +23,7 @@ sudo apt install -y \
   fzf \
   zoxide \
   zsh \
+  tmux \
   ninja-build \
   gettext \
   cmake \
@@ -175,6 +176,40 @@ if ! command -v lazydocker >/dev/null 2>&1; then
 fi
 
 #####################################################
+# go
+#####################################################
+if ! command -v go >/dev/null 2>&1; then
+  echo "==> Installing Go..."
+
+  TMP=$(mktemp -d)
+  cd "$TMP"
+
+  GO_VERSION=$(curl -s https://go.dev/dl/?mode=json | grep -o '"version":"go[^"]*"' | head -n1 | cut -d'"' -f4)
+  curl -Lo go.tar.gz "https://go.dev/dl/${GO_VERSION}.linux-amd64.tar.gz"
+  sudo rm -rf /usr/local/go
+  sudo tar -C /usr/local -xzf go.tar.gz
+
+  cd "$HOME"
+  rm -rf "$TMP"
+fi
+
+grep -q '/usr/local/go/bin' "$HOME/.zshrc" || cat <<'EOF' >>"$HOME/.zshrc"
+
+# Go
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$HOME/go/bin"
+EOF
+
+#####################################################
+# lazysql
+#####################################################
+if ! command -v lazysql >/dev/null 2>&1; then
+  echo "==> Installing lazysql..."
+  export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
+  go install github.com/jorgerojas26/lazysql@latest
+fi
+
+#####################################################
 # nvm
 #####################################################
 if [ ! -d "$HOME/.nvm" ]; then
@@ -299,9 +334,12 @@ echo "nvim --version"
 echo "kitty --version"
 echo "lazygit --version"
 echo "lazydocker --version"
+echo "lazysql --version"
 echo "delta --version"
 echo "rg --version"
 echo "fd --version"
 echo "fzf --version"
+echo "tmux -V"
+echo "go version"
 echo
 echo "======================================="
