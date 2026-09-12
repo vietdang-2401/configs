@@ -1,0 +1,10 @@
+# Tự động chuyển sang chế độ toàn màn hình khi mở
+fullscreen = true
+
+# Ẩn thanh tiêu đề cửa sổ (đặc biệt hữu ích trên macOS/Linux)
+window-decoration = false
+
+# Triệt tiêu khoảng đệm lề viền xung quanh Neovim
+window-padding-x = 0
+window-padding-y = 0
+window-padding-balance = true
