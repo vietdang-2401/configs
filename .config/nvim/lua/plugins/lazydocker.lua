@@ -3,7 +3,7 @@ return {
     "folke/which-key.nvim",
     opts = {
       spec = {
-        { "<leader>k", group = "docker" }, -- Đặt tên cho nhóm phím d
+        { "<leader>l", group = "docker" }, -- Đặt tên cho nhóm phím d
       },
     },
   },
@@ -11,7 +11,7 @@ return {
     "LazyVim/LazyVim",
     keys = {
       {
-        "<leader>kd",
+        "<leader>ld",
         function()
           Snacks.terminal.toggle({ "lazydocker" }, {
             win = {

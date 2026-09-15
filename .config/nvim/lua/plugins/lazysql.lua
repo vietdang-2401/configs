@@ -11,7 +11,7 @@ return {
     "LazyVim/LazyVim",
     keys = {
       {
-        "<leader>ld",
+        "<leader>ls",
         function()
           Snacks.terminal.toggle({ "lazysql" }, {
             win = {

@@ -3,7 +3,7 @@ return {
     "LazyVim/LazyVim",
     keys = {
       {
-        "<leader>gg",
+        "<leader>lg",
         function()
           -- Gọi hàm lazygit chuẩn của LazyVim nhưng thêm tùy chỉnh win
           Snacks.lazygit({
