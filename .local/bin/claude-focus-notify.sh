@@ -31,13 +31,26 @@ MSG="${1:-Cần phê duyệt lệnh tại Window: $T_WINDOW (Pane: $T_PANE)}"
     tmux select-window -t "${T_SESSION}:${T_WINDOW}"
     tmux select-pane -t "${T_SESSION}:${T_WINDOW}.${T_PANE}"
 
-    # Bước B: Lấy đường dẫn Socket và Window ID MỚI NHẤT trực tiếp từ Tmux
-    # (Loại bỏ lỗi cache biến môi trường của Bash)
+    # Bước B: Lấy thông tin môi trường mới nhất từ Tmux
     LATEST_LISTEN_ON=$(tmux show-environment KITTY_LISTEN_ON 2>/dev/null | cut -d= -f2)
     LATEST_WINDOW_ID=$(tmux show-environment KITTY_WINDOW_ID 2>/dev/null | cut -d= -f2)
+    LATEST_OS_WINDOWID=$(tmux show-environment WINDOWID 2>/dev/null | cut -d= -f2)
 
     if [[ -n "$LATEST_LISTEN_ON" && -n "$LATEST_WINDOW_ID" ]]; then
+      # 1. Bảo Kitty đổi sang đúng Tab
       kitty @ --to "$LATEST_LISTEN_ON" focus-window --match id:$LATEST_WINDOW_ID
+
+      # 2. Yêu cầu hệ điều hành trượt về CHÍNH XÁC cửa sổ chứa Tmux này
+      if [[ -n "$LATEST_OS_WINDOWID" ]]; then
+        # Chuyển OS Window ID từ hệ thập phân sang hệ Hex (ví dụ: 12345 -> 0x3039)
+        HEX_WID=$(printf "0x%x" "$LATEST_OS_WINDOWID")
+
+        # Dùng tham số -i để focus chính xác vào Window ID đó
+        wmctrl -i -a "$HEX_WID"
+      else
+        # Phương án dự phòng
+        wmctrl -x -a kitty
+      fi
     fi
   fi
 ) &
