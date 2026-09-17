@@ -3,7 +3,7 @@ return {
     "folke/which-key.nvim",
     opts = {
       spec = {
-        { "<leader>l", group = "Lazy" }, -- Đặt tên cho nhóm phím d
+        { "<leader>k", group = "docker" }, -- Đặt tên cho nhóm phím d
       },
     },
   },
@@ -11,19 +11,18 @@ return {
     "LazyVim/LazyVim",
     keys = {
       {
-        "<leader>ls",
+        "<leader>ke",
         function()
-          Snacks.terminal.toggle({ "lazysql" }, {
+          Snacks.terminal.toggle({ "ddev" }, {
             win = {
               style = "float",
-              border = "",
+              border = "rounded",
               width = 0.9,
               height = 0.9,
               on_buf = function(win)
                 -- Chặn phím q ở mức buffer: Ẩn terminal
                 vim.keymap.set("t", "q", function()
-                  Snacks.terminal.get("lazysql"):hide()
-                  -- vim.api.nvim_feedkeys("q", "t", false)
+                  Snacks.terminal.get("ddev"):hide()
                 end, { buffer = win.buf, nowait = true })
 
                 -- Chặn phím Q ở mức buffer: Gửi lệnh q thật để thoát hẳn
@@ -32,7 +31,7 @@ return {
             },
           })
         end,
-        desc = "LazySql (q: Hide, Q: Quit)",
+        desc = "LazyDDev (q: Hide, Q: Quit)",
       },
     },
   },
